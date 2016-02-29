@@ -1,0 +1,81 @@
+<html>
+<head>
+<style>
+	#div1
+	{float:left; width:200px; height:200px; margin:10px;padding:10px;border:3px solid #000000;}
+	#div2
+	{float:left; width:200px; height:200px; margin:10px;padding:10px;border:3px solid #000000;}
+	#div3
+	{float:left; width:200px; height:200px; margin:10px;padding:10px;border:3px solid #000000;}
+	#div4
+	{float:left; width:200px; height:200px; margin:10px;padding:10px;border:3px solid #000000;}
+	#div5
+	{float:left; width:400px; height:200px; margin:10px;padding:10px;}
+	#divPorcentaje
+	{float: left; width:200px; height:200px; margin:10px; padding:10px; margin-left:25%}
+	#titulo
+	{width: 400px; height:50px;margin-left:40%; margin-top: 2%; font-size:30px; font-family:"verdana";}
+	
+</style>
+<script>
+	var cont=0;
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		ev.target.appendChild(document.getElementById(data));
+		cont++;
+		switch(cont){
+		case 1:
+			document.getElementById("drag5").src="beber2.jpg";
+			document.getElementById("imgPorcentaje").src="25.png";
+		break;
+		case 2:
+			document.getElementById("drag5").src="beber3.gif";
+			document.getElementById("imgPorcentaje").src="50.png";
+
+		break;
+		case 3:
+			document.getElementById("drag5").src="beber4.gif";
+			document.getElementById("imgPorcentaje").src="75.png";
+		break;
+		case 4:
+			document.getElementById("drag5").src="beber5.gif";
+			document.getElementById("imgPorcentaje").src="100.png";
+		break;
+		}
+	}
+	function dropMal(ev){
+		ev.preventDefault();
+	}
+</script>
+</head>
+<body>
+<div id="titulo">EL BORRACHOMETRO</div>
+<div id="div1" ondrop="dropMal(event)" ondragover="allowDrop(event)">
+ <img src="cerveza.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="200" height="200">
+</div>
+<div id="div2" ondrop="dropMal(event)" ondragover="allowDrop(event)">
+<img src="cerveza.jpg" draggable="true" ondragstart="drag(event)" id="drag2" width="200" height="200">
+</div>
+<div id="div3" ondrop="dropMal(event)" ondragover="allowDrop(event)">
+<img src="cerveza.jpg" draggable="true" ondragstart="drag(event)" id="drag3" width="200" height="200">
+</div>
+<div id="div4" ondrop="dropMal(event)" ondragover="allowDrop(event)">
+<img src="cerveza.jpg" draggable="true" ondragstart="drag(event)" id="drag4" width="200" height="200">
+</div>
+<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+<img src="sed.png" draggable="false" ondragstart="drag(event)" id="drag5" width="400" height="300">
+</div>
+<div id="divPorcentaje">
+<img src="0.png" id="imgPorcentaje" width="200" height="200">
+</div>
+</body>
+</html>
